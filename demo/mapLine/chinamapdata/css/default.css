@@ -1,0 +1,27 @@
+.background {
+         fill: none;
+         pointer-events: all;
+       }
+       
+       #states {
+         fill: #aaa;
+         stroke: #fff;
+         stroke-width: 1.5px;
+       }
+       
+       #states .active {
+         fill: steelblue;
+       }
+
+       #tip{
+        opacity:0;
+        position:absolute;
+        padding:10px 15px;
+        background: rgba(200,200,200,0.75);
+        font:14px courier;
+        border: 1px solid #ddd;
+        border-radius: 5px; 
+        box-shadow: 2px 2px 2px rgba(120,120,120,0.55);
+        text-shadow: 0 1px 0 #eee;
+      }
+       #tip-left, #tip-top{color:#333;}

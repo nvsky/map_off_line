@@ -1,0 +1,36 @@
+var rootBar ={
+    "name": "interpolate",
+    "children": [
+        {
+            "name": "山东",
+            "size": 1983
+        }, {
+            "name": "内蒙古asdfsadfasdfsda",
+            "size": 2047
+        }, {
+            "name": "陕西",
+            "size": 1375
+        }, {
+            "name": "天津",
+            "size": 4400
+        }, {
+            "name": "江苏",
+            "size": 2202
+        }, {
+            "name": "重庆",
+            "size": 1382
+        }, {
+            "name": "云南",
+            "size": 1629
+        }, {
+            "name": "四川",
+            "size": 1675
+        }, {
+            "name": "福建",
+            "size": 2042
+        }, {
+            "name": "海南",
+            "size": 2042
+        }
+    ]
+}
