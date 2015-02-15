@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>test</title>
+
+    </head>
+    <body>
+        <div id="TOP">
+                        鼠标 X 轴M坐标:
+        <input id=xxx type=text>
+
+                        鼠标 Y 轴M坐标:
+        <input id=yyy type=text>
+                    鼠标 识别线:
+        <input id=lin type=text style="width:600px;">
+        </div>
+        <div class="panel-width-start" id="map" style="height: 700px; position: relative; background-color: rgb(229, 227, 223); border: 1px solid #000; z-index: 1000;">
+            
+            <div id="viewContainer" style="cursor: default;">
+                <div id="vectorContainer"></div>
+                <div id="tileContainerCover" style=" width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; z-index: 999;display: none;"></div>
+                <div id="tileContainer" style="overflow: hidden; width: 100%; height: 100%; position: absolute; left: 0px; top: 0px;">
+                    <div id="dragContainer" style=" width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; z-index: 0; -webkit-transform: translate(0px, 0px) scale(1); msTransform: translate(0px, 0px) scale(1);">
+                        
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 100;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 101;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 102;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 103;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 104; cursor: default;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 105;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 106;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 107; cursor: default;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; z-index: 10000; width: 100%; height: 100%;"></div>
+                        <div style="position: absolute; left: 0px; top: 0px; display: none;">
+                            <div style="position: absolute; left: 0px; top: 0px; z-index: 0;"></div>
+                        </div>
+                        <div style="position: absolute; left: 0px; top: 0px; display: block;">
+                            <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
+                                <!-- <img src="http://mt3.google.cn/vt/lyrs=m@260000000,highlight:0x35f05296e7142cb9:0xb9625620af0fa98a@1|style:maps&amp;hl=zh-CN&amp;gl=CN&amp;src=app&amp;x=843&amp;y=388&amp;z=10&amp;s=Galil" class="css-3d-layer" style="position: absolute; left: 459px; top: 332px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;">
+                                <img src="http://mt1.google.cn/vt/lyrs=m@260058221,highlight:0x35f05296e7142cb9:0xb9625620af0fa98a@1|style:maps&amp;hl=zh-CN&amp;gl=CN&amp;src=app&amp;x=843&amp;y=387&amp;z=10&amp;s=Gali" class="css-3d-layer" style="position: absolute; left: 459px; top: 76px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;">
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="js/d3.v3.min.js"></script>
+<script type="text/javascript" src="js/cssQuery-p.js"></script>
+<script type="text/javascript" src="js/sylvester.js"></script>
+<script type="text/javascript" src="js/helpers.js"></script>
+<!-- <script type="text/javascript" src="js/EventHelpers.js"></script> -->
+<script type="text/javascript" src="js/cssSandpaper.js"></script>
+<script type="text/javascript" src="js/widget.js"></script>
+<script type="text/javascript" src="js/control.js"></script>
+<script>
+	function mouseMove(ev) {
+		ev = ev || window.event;
+		var mousePos = mouseCoords(ev);
+		var res = gis.map.convertMPointToLatLng([mousePos.x, mousePos.y]);
+		var lnglatToMpoint = gis.map.convertLatLngToMPoint([res[0], res[1]]);
+		// document.getElementById("xxx").value = res[0];
+		// document.getElementById("yyy").value = res[1];
+	}
+
+	function mouseCoords(ev) {
+		if (ev.pageX || ev.pageY) {
+			return {
+				x : ev.pageX,
+				y : ev.pageY
+			};
+		}
+		return {
+			x : ev.clientX + document.getElementById('map').scrollLeft - document.getElementById('map').clientLeft,
+			y : ev.clientY + document.getElementById('map').scrollTop - document.getElementById('map').clientTop
+		};
+	}
+    (function(){
+        document.getElementById('TOP').style.MozUserSelect = 'none';//fixrox禁止选择的JS脚本
+        document.getElementById('TOP').style.webkitUserSelect = 'none';
+        if( document.all ){//IE下禁止选择
+            document.getElementById('TOP').onselectstart = function(){return false;};
+            document.body.onselectstart = function(){return false;};
+        };
+    })();
+	//document.getElementById('map').onmousemove = mouseMove;
+</script>
